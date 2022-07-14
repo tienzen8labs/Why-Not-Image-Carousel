@@ -16,8 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 
-import com.google.android.material.button.MaterialButton;
-
 import org.imaginativeworld.whynotimagecarousel.listener.CarouselListener;
 import org.imaginativeworld.whynotimagecarousel.listener.CarouselOnScrollListener;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselGravity;
@@ -88,11 +86,7 @@ public class SampleFragment extends Fragment {
         binding.carousel.setCarouselPaddingBottom(Utils.dpToPx(0, context));
 
         binding.carousel.setShowNavigationButtons(false);
-        binding.carousel.setPreviousButtonLayout(R.layout.custom_previous_button_layout);
-        binding.carousel.setPreviousButtonId(R.id.custom_btn_previous);
         binding.carousel.setPreviousButtonMargin(Utils.dpToPx(8, context)); // px value of dp
-        binding.carousel.setNextButtonLayout(R.layout.custom_next_button_layout);
-        binding.carousel.setNextButtonId(R.id.custom_btn_next);
         binding.carousel.setNextButtonMargin(Utils.dpToPx(8, context)); // px value of dp
 
         binding.carousel.setCarouselType(CarouselType.SHOWCASE);
@@ -146,12 +140,6 @@ public class SampleFragment extends Fragment {
         CircleIndicator2 indicator = binding.customIndicator;
         binding.carousel.setIndicator(indicator);
 
-        MaterialButton previousBtn = binding.btnGotoPrevious;
-        previousBtn.setOnClickListener(v -> binding.carousel.previous());
-
-        MaterialButton nextBtn = binding.btnGotoNext;
-        nextBtn.setOnClickListener(v -> binding.carousel.next());
-
         List<CarouselItem> list = new ArrayList<>();
 
         // Dummy header
@@ -170,25 +158,5 @@ public class SampleFragment extends Fragment {
         }
 
         binding.carousel.setData(list);
-
-        // ----------------------------------------------------------------
-
-        binding.fabPlay.setOnClickListener(v -> {
-            if (isStarted) {
-
-                isStarted = false;
-                binding.carousel.stop();
-
-                binding.fabPlay.setText("Start");
-
-            } else {
-
-                isStarted = true;
-                binding.carousel.start();
-
-                binding.fabPlay.setText("Stop");
-
-            }
-        });
     }
 }

@@ -367,31 +367,6 @@ class ImageCarousel(
         )
     }
 
-    @LayoutRes
-    var previousButtonLayout: Int = R.layout.previous_button_layout
-        set(value) {
-            field = value
-
-            btnPrevious = null
-
-            previousButtonContainer.removeAllViews()
-            LayoutInflater.from(context).apply {
-                inflate(previousButtonLayout, previousButtonContainer, true)
-            }
-        }
-
-    @IdRes
-    var previousButtonId: Int = R.id.btn_previous
-        set(value) {
-            field = value
-
-            btnPrevious = carouselView.findViewById(previousButtonId)
-
-            btnPrevious?.setOnClickListener {
-                previous()
-            }
-        }
-
     @Dimension(unit = Dimension.PX)
     var previousButtonMargin: Int = 0
         set(value) {
@@ -405,31 +380,6 @@ class ImageCarousel(
                 0
             )
             previousButtonContainer.layoutParams = previousButtonParams
-        }
-
-    @LayoutRes
-    var nextButtonLayout: Int = R.layout.next_button_layout
-        set(value) {
-            field = value
-
-            btnNext = null
-
-            nextButtonContainer.removeAllViews()
-            LayoutInflater.from(context).apply {
-                inflate(nextButtonLayout, nextButtonContainer, true)
-            }
-        }
-
-    @IdRes
-    var nextButtonId: Int = R.id.btn_next
-        set(value) {
-            field = value
-
-            btnNext = carouselView.findViewById(nextButtonId)
-
-            btnNext?.setOnClickListener {
-                next()
-            }
         }
 
     @Dimension(unit = Dimension.PX)
@@ -697,31 +647,6 @@ class ImageCarousel(
                     R.styleable.ImageCarousel_carouselPaddingBottom,
                     0F
                 ).toInt()
-
-                previousButtonLayout = getResourceId(
-                    R.styleable.ImageCarousel_previousButtonLayout,
-                    R.layout.previous_button_layout
-                )
-
-                previousButtonId = getResourceId(
-                    R.styleable.ImageCarousel_previousButtonId,
-                    R.id.btn_previous
-                )
-
-                previousButtonMargin = getDimension(
-                    R.styleable.ImageCarousel_previousButtonMargin,
-                    4.dpToPx(context).toFloat()
-                ).toInt()
-
-                nextButtonLayout = getResourceId(
-                    R.styleable.ImageCarousel_nextButtonLayout,
-                    R.layout.next_button_layout
-                )
-
-                nextButtonId = getResourceId(
-                    R.styleable.ImageCarousel_nextButtonId,
-                    R.id.btn_next
-                )
 
                 nextButtonMargin = getDimension(
                     R.styleable.ImageCarousel_nextButtonMargin,
